@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>测试Thymeleaf</title>
+</head>
+<body>
+<h1 th:text="${name}"></h1>
+<hr/>
+<!--这里的add跳转，与controller中 @RequestMapping("/add")一致，然后@RequestMapping("/add)引用return "/user/add";-->
+<div shiro:hasPermission="user:add"><!--config:hasPermission="user:add"表示只有有add权限的用户才能看到该页面-->
+    进入用户添加功能:<a href="add">添加</a><br/>
+</div>
+<div shiro:hasPermission="user:update">
+    进入用户更新功能:<a href="update">更新</a><br/>
+</div>
+<a href="/toLogin">登录账户</a>
+</body>
+</html>
